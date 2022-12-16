@@ -1,0 +1,50 @@
+* {
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	letter-spacing: -0.01em;
+}
+
+.App {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0.5rem;
+}
+
+.line {
+	width: 100%;
+	background: #c0c4cc;
+	border: 1px solid #c0c4cc;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+.header {
+	/* Most Recent Movies */
+	width: 269px;
+	height: 22px;
+
+	/* H / H3 */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+	/* or 117% */
+	display: flex;
+	align-items: center;
+}
+
+.movies-group {
+	width: 100%;
+	gap: 26px;
+	padding: 26px 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	border: 1px solid red;
+}
