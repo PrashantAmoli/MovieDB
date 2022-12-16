@@ -1,20 +1,21 @@
 import './App.css';
-import logo from './assets/logo.svg';
+import { useEffect, useState } from 'react';
 import Topbar from './components/Topbar';
 import Movie from './components/Movie';
-import { useEffect, useState } from 'react';
+import Modal from './components/Modal';
 
 function App() {
+	const [openModal, setOpenModal] = useState(false);
 	const [movies, setMovies] = useState([...sample]);
 
-	// useEffect(() => {
-	// 	const updateMovies = async () => {
-	// 		const newMovies = await getMovies();
-	// 		const IDs = new Set(movies.map(d => d.id));
-	// 		setMovies([...movies, ...newMovies.filter(d => !IDs.has(d.id))]);
-	// 	};
-	// 	updateMovies();
-	// }, []);
+	useEffect(() => {
+		const updateMovies = async () => {
+			const newMovies = await getMovies();
+			const IDs = new Set(movies.map(d => d.id));
+			setMovies([...movies, ...newMovies.filter(d => !IDs.has(d.id))]);
+		};
+		updateMovies();
+	}, []);
 
 	const getMovies = async () => {
 		const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`);
@@ -23,29 +24,35 @@ function App() {
 	};
 
 	return (
-		<div className="App">
-			<Topbar />
+		<>
+			<div className="App">
+				<Topbar />
 
-			<div className="line"></div>
-			<header className="header">Most Recent Movies</header>
+				<div className="line"></div>
+				<header className="header">Most Recent Movies</header>
 
-			<div className="movies-group">
-				{movies.map(movie => (
-					<Movie
-						key={movie.id}
-						id={movie.id}
-						rating={movie.vote_average}
-						title={movie.title}
-						overview={movie.overview}
-						poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-						releaseDate={movie.release_date}
-						voteCount={movie.vote_count}
-					/>
-				))}
+				<div className="movies-group">
+					{movies.map(movie => (
+						<Movie
+							key={movie.id}
+							id={movie.id}
+							rating={movie.vote_average}
+							title={movie.title}
+							overview={movie.overview}
+							poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+							releaseDate={movie.release_date}
+							voteCount={movie.vote_count}
+							onClick={e => {
+								console.log('clicked', e.target);
+								setOpenModal(true);
+							}}
+						/>
+					))}
+				</div>
+
+				{/* <p>{JSON.stringify(movies)}</p> */}
 			</div>
-
-			<p>{JSON.stringify(movies)}</p>
-		</div>
+		</>
 	);
 }
 
@@ -126,7 +133,7 @@ const sample = [
 		genre_ids: [14, 28, 35, 80],
 		id: 1013860,
 		original_language: 'en',
-		original_title: 'R.I.P.D. 2: Rise of the Damned',
+		original_title: 'R.I.P.D. 2: Rise of the Damned Trilogy',
 		overview: 'When Sheriff Roy Pulsipher finds himself in the afterlife, he joins a special police force and returns to Earth to save humanity from the undead.',
 		popularity: 1936.567,
 		poster_path: '/g4yJTzMtOBUTAR2Qnmj8TYIcFVq.jpg',

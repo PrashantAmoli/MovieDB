@@ -1,4 +1,4 @@
-.movie_box {
+.movieBox {
 	/* Box */
 	width: 282px;
 	height: 348px;
@@ -8,11 +8,11 @@
 	box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 }
-.movie_box:hover {
+.movieBox:hover {
 	box-shadow: 1px 2px 8px 2px rgba(0, 0, 0, 0.22);
 }
 
-.movie_poster {
+.moviePoster {
 	/* Movie poster */
 	position: relative;
 	top: -40px;
@@ -38,17 +38,29 @@
 	background: #ffffff;
 	border: 1px solid #000000;
 	z-index: 1;
+	user-select: none;
+}
+.rating:hover {
+	box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-.movie_title {
-	/* Movie name */
+.titleBox {
 	position: relative;
+	top: -42px;
+	height: 42px;
+	width: 100%;
 	padding: 0 15px;
-	top: -35px;
+	background: #ffffff;
+	border-radius: 0px 0px 7px 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.movieTitle {
 	font-weight: 400;
 	font-size: 16px;
-	line-height: 26px;
-	height: 26px;
+	max-height: 90%;
 	text-align: center;
 	letter-spacing: -0.01em;
 	max-width: 100%;

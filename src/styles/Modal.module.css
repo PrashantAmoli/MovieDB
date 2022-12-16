@@ -1,0 +1,99 @@
+/* Modal Styles */
+.overlay {
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+.modalContainer {
+	max-width: 600px;
+	width: 100%;
+	min-height: 40vh;
+	background-color: #ffffff;
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 25px;
+	border-radius: 5px;
+	box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+	user-select: none;
+}
+
+.modalHead {
+	/* Movie title wrapper */
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modalHead h2 {
+	/* Movie Title */
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 700;
+}
+
+.modalHead img {
+	/* close button */
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.modalBody {
+	/* Movie info wrapper */
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-top: 20px;
+}
+
+.modalPoster {
+	/* Movie poster */
+	width: 50%;
+	/* height: 300px; */
+	background: #c0c4cc;
+	border-radius: 5px;
+}
+
+.modalInfo {
+	/* Movie info */
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-left: 20px;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+@media (max-width: 768px) {
+	.modalContainer {
+		width: 90%;
+		top: 50%;
+	}
+	.modalBody {
+		flex-direction: column;
+	}
+	.modalPoster {
+		width: 100%;
+	}
+	.modalInfo {
+		margin-left: 0;
+	}
+}

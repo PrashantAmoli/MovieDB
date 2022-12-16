@@ -1,0 +1,18 @@
+.navbar {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.searchBar {
+	padding: 10px;
+	width: 180px;
+	height: 36px;
+	border: 1px solid #c0c4cc;
+	border-radius: 2px;
+	background: url('./assets/union.png') center left no-repeat;
+	padding-left: 25px;
+	background-size: 20px 20px;
+}
