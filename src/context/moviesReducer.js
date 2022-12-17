@@ -1,36 +1,38 @@
 export const initialState = {
 	moviesList: [],
-	searchQuery: '300',
-	fetchedPages: 0,
-	totalPages: 2,
-	totalMovies: 30,
+	searchQuery: '', // last executed searchQuery '' means Homepage/new & popular movies
+	fetchedPages: 0, // to keep count of pages fetched
+	totalPages: 0,
+	totalMovies: 0,
 }; // * API returns <=20 videos per page
 
 const moviesReducer = (state, action) => {
 	switch (action.type) {
-		case 'UPDATE_THEME':
-			return {
-				...state,
-				transactions: state.transactions.filter(transaction => transaction.id !== action.payload),
-			};
-
-		case 'UPDATE_SEARCH_QUERY':
-			// { searchQuery, totalPages, totalMovies }
-			return {
-				...state,
-				...action.payload,
-			};
-
 		case 'UPDATE_MOVIES_LIST':
 			// { fetchedPages, moviesList[] }
-			const { fetchedPages, moviesList } = action.payload;
+			const { moviesList: newMoviesList } = action.payload; // Obj. Destructuring with alias
 			const IDs = new Set(state.moviesList.map(movie => movie.id));
-			const newMovies = [...moviesList.filter(movie => !IDs.has(movie.id))];
+			// filtering out movies without poster (better UI) and create a union without duplicates
+			const newMovies = [...newMoviesList.filter(movie => !IDs.has(movie.id) && movie.poster_path)];
+			// todo implement some solution for movies without poster
 			return {
 				...state,
-				fetchedPages,
-				// moviesList: [...state.moviesList, ...action.payload.moviesList.filter(movie => movie.id !== IDs.has(movie.id))],
+				fetchedPages: action.payload.fetchedPages,
 				moviesList: [...state.moviesList, ...newMovies],
+			};
+
+		case 'NEW_MOVIES_LIST':
+			// { fetchedPages, moviesList[] }
+			const { fetchedPages, searchQuery, totalMovies, totalPages, moviesList } = action.payload;
+			// Remove old movies and add new movies only
+			return {
+				...state,
+				searchQuery,
+				fetchedPages,
+				totalPages,
+				totalMovies,
+				// filtering out movies without poster
+				moviesList: [...moviesList.filter(movie => movie.poster_path)],
 			};
 
 		default:

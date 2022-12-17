@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import moviesReducer, { initialState } from './moviesReducer';
 
 const MoviesContext = createContext(initialState);
@@ -6,24 +6,19 @@ const MoviesContext = createContext(initialState);
 export const MoviesProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(moviesReducer, initialState);
 
-	const updateMoviesList = movieData => {
-		// * movieData = { fetchedPages, moviesList }
-		dispatch({ type: 'UPDATE_MOVIES_LIST', payload: movieData });
-	};
+	// To append to currently displyed movies list
+	// * moviesData = { fetchedPages, moviesList }
+	const updateMoviesList = moviesData => dispatch({ type: 'UPDATE_MOVIES_LIST', payload: moviesData });
 
-	const updateSearchQuery = queryData => {
-		// * queryData = { searchQuery, totalPages, totalMovies }
-		dispatch({ type: 'UPDATE_SEARCH_QUERY', payload: queryData });
-	};
+	// To create new movies list from popular|| search
+	// * moviesData = { searchQuery, fetchedPages, totalPages, totalMovies, moviesList }
+	const updateNewMoviesList = moviesData => dispatch({ type: 'NEW_MOVIES_LIST', payload: moviesData });
 
-	// const updateTheme = theme => {
-	// 	dispatch({ type: 'UPDATE_THEME', payload: theme });
-	// };
-
+	// state values and function provided to the components in this context
 	const value = {
 		...state,
 		updateMoviesList,
-		updateSearchQuery,
+		updateNewMoviesList,
 	};
 
 	return <MoviesContext.Provider value={value}>{children}</MoviesContext.Provider>;
@@ -31,11 +26,7 @@ export const MoviesProvider = ({ children }) => {
 
 const useMovies = () => {
 	const context = useContext(MoviesContext);
-
-	if (context === undefined) {
-		throw new Error('useMoviesContext must be used within a MoviesProvider');
-	}
-
+	if (context === undefined) console.log('useMoviesContext must be used within a MoviesProvider');
 	return context;
 };
 

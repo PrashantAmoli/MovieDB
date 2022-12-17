@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Close from '../assets/24x24.svg';
 import styles from '../styles/Modal.module.css';
 
+// todo Move all the the functions using api to a seperate js file to clean up the code
+
 const Modal = ({ open, onClose, title, image, releaseDate, overview, rating, voteCount }) => {
 	if (!open) return null;
 
@@ -20,6 +22,7 @@ const Modal = ({ open, onClose, title, image, releaseDate, overview, rating, vot
 				</div>
 				<div className={`${styles.modalBody}`}>
 					<img
+						// image url source: MovieDB API
 						src={`https://image.tmdb.org/t/p/w500${image}`}
 						alt="Movie Poster"
 						onClick={onClose}

@@ -65,3 +65,10 @@
 	letter-spacing: -0.01em;
 	max-width: 100%;
 }
+
+@media (max-width: 512px) {
+	.movieBox {
+		/* width: 80%;
+		height: fit-content; */
+	}
+}

@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+.navbar img {
+	cursor: pointer;
+}
+
 .searchBar {
 	padding: 10px;
 	width: 180px;
@@ -15,4 +19,23 @@
 	background: url('../assets/Union.png') center left no-repeat;
 	padding-left: 25px;
 	background-size: 20px 20px;
+}
+
+.searchBar:hover,
+.searchBar:focus {
+	outline: 1px solid #a5a5ff;
+}
+
+.line {
+	width: 100%;
+	background: #c0c4cc;
+	border: 1px solid #c0c4cc;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+@media (max-width: 500px) {
+	.navbar img {
+		width: 35%;
+	}
 }
