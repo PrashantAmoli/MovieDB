@@ -6,10 +6,10 @@ const Modal = ({ open, onClose, title, image, releaseDate, overview, rating, vot
 	if (!open) return null;
 
 	return (
-		<div
-			className={`${styles.overlay}`}
-			onClick={e => e.stopPropagation()}>
-			<div className={`${styles.modalContainer}`}>
+		<div className={`${styles.overlay}`}>
+			<div
+				className={`${styles.modalContainer}`}
+				onClick={e => e.stopPropagation()}>
 				<div className={`${styles.modalHead}`}>
 					<h2>{title}</h2>
 					<img

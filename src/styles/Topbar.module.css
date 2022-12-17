@@ -12,7 +12,7 @@
 	height: 36px;
 	border: 1px solid #c0c4cc;
 	border-radius: 2px;
-	background: url('./assets/union.png') center left no-repeat;
+	background: url('../assets/Union.png') center left no-repeat;
 	padding-left: 25px;
 	background-size: 20px 20px;
 }

@@ -1,9 +1,7 @@
-import './App.css';
 import { useEffect, useState } from 'react';
-import Topbar from './components/Topbar';
-import Movie from './components/Movie';
-import Modal from './components/Modal';
-import { MoviesProvider } from './context/MoviesContext';
+import Movie from '../components/Movie';
+import Modal from '../components/Modal';
+import { MoviesProvider } from '../context/MoviesContext';
 
 function App() {
 	const [openModal, setOpenModal] = useState(false);
@@ -25,35 +23,31 @@ function App() {
 	};
 
 	return (
-		<MoviesProvider>
-			<div className="App">
-				<Topbar />
+		<div className="App">
+			<div className="line"></div>
+			<header className="header">Most Recent Movies</header>
 
-				<div className="line"></div>
-				<header className="header">Most Recent Movies</header>
-
-				<div className="movies-group">
-					{movies.map(movie => (
-						<Movie
-							key={movie.id}
-							id={movie.id}
-							rating={movie.vote_average}
-							title={movie.title}
-							overview={movie.overview}
-							poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-							releaseDate={movie.release_date}
-							voteCount={movie.vote_count}
-							onClick={e => {
-								console.log('clicked', e.target);
-								setOpenModal(true);
-							}}
-						/>
-					))}
-				</div>
-
-				{/* <p>{JSON.stringify(movies)}</p> */}
+			<div className="movies-group">
+				{movies.map(movie => (
+					<Movie
+						key={movie.id}
+						id={movie.id}
+						rating={movie.vote_average}
+						title={movie.title}
+						overview={movie.overview}
+						poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+						releaseDate={movie.release_date}
+						voteCount={movie.vote_count}
+						onClick={e => {
+							console.log('clicked', e.target);
+							setOpenModal(true);
+						}}
+					/>
+				))}
 			</div>
-		</MoviesProvider>
+
+			{/* <p>{JSON.stringify(movies)}</p> */}
+		</div>
 	);
 }
 
