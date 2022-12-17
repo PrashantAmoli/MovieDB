@@ -2,7 +2,7 @@
 
 This React App is developed using React, CSS Modules, Movie DB API. No additional library was used. Project was intialized with Vite. It has modular design and responsive UI.
 
-Pre-interview Assignment Developed within 48 hours.
+![MovieDB](https://user-images.githubusercontent.com/72202929/208246433-422dddf1-61ca-449f-a4e5-a2fb9d8b2375.png)
 
 ### Usage:
 1. Clone and open the repo
